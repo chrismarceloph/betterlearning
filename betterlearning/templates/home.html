@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load staticfiles %}
+{% block body %}
+  <a name="top"></a>
+    <section id="features-hero" style="background: url({% static "img/bg.jpg" %}) #f7fdfe; height: 1024px;">
+        <div class="row">
+          <div class="large-12 columns" style="margin-top: 200px;">
+            <div class="row">
+                <div class="columns large-7">
+                    <h1 style="font-size: 80px;">Better Learning</h1>
+                    <ul data-orbit>
+                      <li data-orbit-slide="headline-3">
+                        <div>
+                          <div style="margin: 3rem;">
+                            <div class="panel radius">
+                                <h2>Learn it. Prove it. Apply it.</h2>
+                                <p>In Better Learning we offer you a fresh start: A virtual identity in a virtual world setting with real projects to help you acquire real life skills. Draft your own courses or join related groups, classrooms and global communities. Start building with your own hands and see the world not as a mere theoretical concept but as a laboratory, a playground of ideas.</p>
+                                </ol>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li data-orbit-slide="headline-1">
+                        <div>
+                          <div style="margin: 3rem;">
+                            <div class="flex-video">
+                            <iframe width="640" height="360" src="https://www.youtube.com/embed/zDZFcDGpL4U?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li data-orbit-slide="headline-2">
+                        <div>
+                          <div style="margin: 3rem;">
+                            <div class="panel radius">
+                                <h3>Principles for Learners</h3>
+                                <ol>
+                                    <li>Learning is by doing.</li>
+                                    <li>You are in charge of your own learning.</li>
+                                    <li>There are so many ways to learn; be creative.</li>
+                                    <li>You are what you do and not your titles, past achievements or failures.</li>
+                                    <li>Share your knowledge and skills; don't be greedy.</li>
+                                    <li>Always be curious, and always aim to improve yourself.</li>
+                                    <li>Be nice to others; don't be a jerk.</li>
+                                    <li>Collaborate not compete, that's how the outside world works.</li>
+                                    <li>Before asking other people, try Googling it first.</li>
+                                    <li>Break all the rules whenever sensible, including this one.</li>
+                                </ol>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                    
+                </div>
+            <form class="login" method="POST" action="{% url 'account_login' %}">
+                <div class="columns large-5 panel radius text-center" style="background: #008cba;">
+                    <img src="{% static "img/marigem.png" %}" style="margin: -200px 0 0 -20px;"/>
+                    <h2>Start learning now!</h2>
+                      {% csrf_token %}
+                      {{ form.as_p }}
+                      {% if redirect_field_value %}
+                      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                      {% endif %}
+                      <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+                      <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
+                    <input type="text" placeholder="Username" style="text-shadow: none;" />
+                    <input type="password" placeholder="Password" style="text-shadow: none;" />
+                    <a class="button success round small" style="width: 100%;" href="learner.html"><strong>Sign Up or Log In</strong></a>
+                    <hr>
+                    <a class="button success radius" style="padding: 10px 20px;"><i class="fi-social-facebook" style="font-size: 30px;"></i></a>
+                    <a class="button success radius" style="padding: 10px 20px;"><i class="fi-social-twitter" style="font-size: 30px;"></i></a>
+                    <a class="button success radius" style="padding: 10px 20px;"><i class="fi-social-google-plus" style="font-size: 30px;"></i></a>
+                    <a class="button success radius" style="padding: 10px 20px;"><i class="fi-social-linkedin" style="font-size: 30px;"></i></a>
+                </div>
+            </form>
+            </div>
+          </div>
+        </div>
+    </section>
+    <section id="feed">
+        <div class="row">
+          <div class="large-2 columns">
+          </div>
+          <div class="large-10 columns">
+          </div>
+        </div>
+    </section>
+{% endblock %}
